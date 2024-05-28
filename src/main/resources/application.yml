@@ -1,8 +1,11 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: spring-config-client-01
   profiles:
-    active: local
+    default: default
   config:
     import: optional:configserver:http://localhost:8888
   cloud:
@@ -10,10 +13,8 @@ spring:
       # url ?? :
       # http://localhost:8888/${name}/${profile}/${main}
       name: spring
-      profile: local
+      profile: default
       label: main
-server:
-  port: 8081
 
 # ????? ???? Actuator ??
 management:
@@ -21,3 +22,32 @@ management:
     web:
       exposure:
         include: "refresh"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  cloud:
+    config:
+      name: spring
+      profile: local
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  cloud:
+    config:
+      profile: dev
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  cloud:
+    config:
+      profile: prod

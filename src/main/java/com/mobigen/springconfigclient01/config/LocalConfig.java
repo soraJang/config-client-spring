@@ -9,24 +9,32 @@ import org.springframework.stereotype.Component;
 public class LocalConfig {
 
     @Value("${app.version}")
-    private String username;
+    private String version;
 
     @Value("${app.dt}")
-    private String password;
+    private String dt;
 
-        public String getUsername() {
-        return username;
+    @Value("${app.message}")
+    private String message;
+
+    public String getVersion() {
+        return version;
     }
 
-    public String getPassword() {
-        return password;
+    public String getDt() {
+        return dt;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     @Override
     public String toString() {
         return "LocalConfig{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
+                "version='" + version + '\'' +
+                ", message='" + message + '\'' +
+                ", dt='" + dt + '\'' +
                 '}';
     }
 }
