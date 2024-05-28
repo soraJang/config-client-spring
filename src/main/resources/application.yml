@@ -30,7 +30,6 @@ spring:
       on-profile: local
   cloud:
     config:
-      name: spring
       profile: local
 
 
